@@ -3,7 +3,7 @@ package Unidad2.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import Unidad2.utils.ClaseBase;
-import org.openqa.selenium.WebElement;
+
 
 public class HomePage extends ClaseBase {
 
@@ -11,7 +11,7 @@ public class HomePage extends ClaseBase {
     // Indentifica boton estudiante
     By btnCambiaEstudiante = By.xpath("//a[@data-tipo-usuario='alumno']");
 
-    //identifica boton ingresar
+    //identifica botones
     By btnIngresar = By.xpath("//button[@id=\"ingresar\"]");
 
    // Seleccionar el libro de lenguaje para ver su contenido
@@ -20,7 +20,8 @@ public class HomePage extends ClaseBase {
     // Descargar el libro
     By btndescargarLyC = By.xpath("//a[@class='btn btn-default' and contains(., 'Descargar')]");
 
-
+    // Cerrar sesión
+    By btncerrar = By.xpath("//a[@class=\"btn btn-primary\"]");
 
 
 
@@ -30,7 +31,7 @@ public class HomePage extends ClaseBase {
     }
 
     //acciones
-    //public void irARegisterPage(){ click(esperaExplicita(btnRegistrase)); }
+
      //hace clic en boton estudiante
     public void irACambiaEstudiante(){ click(esperaExplicita(btnCambiaEstudiante)); }
 
@@ -43,13 +44,7 @@ public class HomePage extends ClaseBase {
     //hacer clic en descargar libro
     public void irAbtndescargarLyC(){ click(esperaExplicita(btndescargarLyC)); }
 
-    /* public void irALoginPage(){
-        click(esperaExplicita(btnIngresar));
-    }
+    public void irACerrar(){click(esperaExplicita(btncerrar));}
 
-   public String obtenerUsername(){
-        return obtenerAtributoWebElement(esperaExplicita(byBtnTextUsername),"aria-label");
-    }
 
-     */
 }

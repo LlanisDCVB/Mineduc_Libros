@@ -9,10 +9,10 @@ public class LoginPage extends ClaseBase {
     //Agrupar los localizadores
 
     // mensaje de error del RUT
-    By byErrorMessage = By.id("login_error_alumno_run");
+    By byErrorMessage = By.xpath("//span[@id='login_error_alumno_run' and @class='error-from']");//By.id("login_error_alumno_run");
 
         // Verificar mensaje de advertencia de estudiante incorrecto
-    By bywarningMessage = By.id("warning");
+    By bywarningMessage = By.xpath("//div[@id='warning']//div[contains(@class, 'tab-content')]"); //id("warning");
 
     // verificar mensaje seleccionar curso
     By byErrorCurso = By.id("login_error_alumno_nivel");
@@ -20,6 +20,7 @@ public class LoginPage extends ClaseBase {
     // verificar mensaje seleccionar curso
     By byErrorFechaNac = By.id("login_error_alumno_fecha_nacimiento");
 
+    By bySinFecha = By.xpath("//span[@id='login_error_alumno_fecha_nacimiento' and @class='error-from']");
 
     // campos a llenar
     By byTxtrut = By.id("run_alumno");
@@ -32,10 +33,15 @@ public class LoginPage extends ClaseBase {
         super(driver);
     }
 
-    public void iniciarSesion(String Rut, String Nivel, String FechNac) {
+    public void iniciarSesion(String Rut, String Nivel) throws InterruptedException {
+
+        //agregarTexto(esperaExplicita(byTxtFechaNac), FechNac);
         agregarTexto(esperaExplicita(byTxtrut), Rut);
         agregarTexto(esperaExplicita(byTxtNivel), Nivel);
-        agregarTexto(esperaExplicita(byTxtFechaNac), FechNac);
+        ClaseBase.esperarXSegundos(2000);
+
+
+
     }
 
     public String obtenerErrorRut() {
@@ -43,7 +49,7 @@ public class LoginPage extends ClaseBase {
 
     }
 
-    public String obtenerErrorEstidianteIncorrecto() {
+    public String obtenerErrorEstudianteIncorrecto() {
         return obtenerTexto(esperaExplicita(bywarningMessage));
 
     }
@@ -55,6 +61,11 @@ public class LoginPage extends ClaseBase {
 
     public String obtenerErrorFecha() {
         return obtenerTexto(esperaExplicita(byErrorFechaNac));
+
+    }
+
+    public String obtenerErrorFechaNulo() {
+        return obtenerTexto(esperaExplicita(bySinFecha));
 
     }
 

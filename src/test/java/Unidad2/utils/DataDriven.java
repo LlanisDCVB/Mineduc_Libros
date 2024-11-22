@@ -22,7 +22,7 @@ public class DataDriven {
         //se coloca la rura donde se encuentra el archivo de datos para las pruebas
         FileInputStream file = null;
         try {
-            file = new FileInputStream("C:\\Users\\Diana.Vergara\\OneDrive - TSOFT\\Documentos\\Oficina\\Capacitacion Selenium\\Mineduc_Libros\\src\\test\\resources\\data\\DataPruebas.xlsx");
+            file = new FileInputStream("src\\test\\resources\\data\\DataPruebas.xlsx");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

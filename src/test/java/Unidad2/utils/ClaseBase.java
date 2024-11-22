@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ClaseBase {
     //Atributos
-    protected WebDriver driver;
+    protected static WebDriver driver;
     private WebDriverWait wait;
 
 
@@ -39,7 +39,7 @@ public class ClaseBase {
 
 
     //funciones genericas para el uso de la libreria de selenium
-    public WebElement buscarElementoWeb(By localizador){
+    public static WebElement buscarElementoWeb(By localizador){
         return driver.findElement(localizador);
     }
 
@@ -58,7 +58,7 @@ public class ClaseBase {
     }
 
     //Esperar X Segundos
-    public void esperarXSegundos(int miliSegundos) {
+    public static void esperarXSegundos(int miliSegundos) {
         try {
             Thread.sleep(miliSegundos);
         } catch (InterruptedException e) {
@@ -84,42 +84,17 @@ public class ClaseBase {
         elemento.sendKeys(texto);
     }
 
-    public void agregarCombinacionTeclas(By localizador, Keys key){
-        this.driver.findElement(localizador).sendKeys(key);
-    }
 
     public void agregarCombinacionTeclas(WebElement elemento, Keys key){
         elemento.sendKeys(key);
     }
 
-    public void cerrarBrowser(){
-        this.driver.close();
+    public static void cerrarBrowser(){
+        driver.close();
     }
 
     public void maximizarBrowser(){
         this.driver.manage().window().maximize();
-    }
-
-    public boolean estaDesplegado(By localizador){
-        try{
-            return this.driver.findElement(localizador).isDisplayed();
-        }catch(org.openqa.selenium.NoSuchElementException ex){
-            return false;
-        }
-    }
-
-    public boolean estaDesplegado(WebElement elemento){
-        try{
-            return elemento.isDisplayed();
-        }catch(org.openqa.selenium.NoSuchElementException ex){
-            return false;
-        }
-    }
-
-    public void selectDDLPorTextoVisible(WebElement elemento,String texto){
-        Select select = new Select(elemento);
-
-        select.selectByVisibleText(texto);
     }
 
     //Conectar a el webdriver, sin importar que navegador sea
@@ -137,10 +112,6 @@ public class ClaseBase {
         return this.driver;
     }
 
-
-    public String obtenerTexto(By localizador){
-        return this.driver.findElement(localizador).getText();
-    }
 
     public String obtenerTexto(WebElement elemento){
         return elemento.getText();
@@ -164,6 +135,25 @@ public class ClaseBase {
     // Método para mover el scroll hacia abajo una cantidad específica de píxeles
     public static void bajarScroll(WebDriver driver, int pixels) {
         scrollByPixels(driver, 0, pixels);
+    }
+
+    public static void Calendario(){
+
+      WebElement datePickerButton = driver.findElement(By.id("fecha_nacimiento_alumno"));
+      datePickerButton.click(); // Abre el calendario
+
+      WebElement yearDropdown = driver.findElement(By.className("ui-datepicker-year"));
+      Select yearSelect = new Select(yearDropdown);
+      yearSelect.selectByValue("2013"); // Selecciona el año 2013
+
+      WebElement monthDropdown = driver.findElement(By.className("ui-datepicker-month"));
+      Select monthSelect = new Select(monthDropdown);
+      monthSelect.selectByValue("5"); // Selecciona Junio (0 = Enero, 5 = Junio)
+
+      WebElement day = driver.findElement(By.xpath("//a[text()='14']")); // Encuentra el enlace con el texto '14'
+      day.click(); // Selecciona el día
+
+
     }
 
 }
