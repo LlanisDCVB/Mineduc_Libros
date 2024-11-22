@@ -45,7 +45,7 @@ public class TestCatalogoLibros {
     public void posCondiciones() {
     }
 
-    // @Test
+     @Test
     public void CP001_ErrorRUTErroneo() throws InterruptedException {  //no se encuentra en la base de datos)
         ClaseBase.esperarXSegundos(5000);
         homePage.irACambiaEstudiante();
@@ -64,7 +64,7 @@ public class TestCatalogoLibros {
 
     }
 
-    //@Test
+    @Test
     public void CP002_ErrorRutInvalido() throws InterruptedException {
         ClaseBase.esperarXSegundos(5000);
         homePage.irACambiaEstudiante();
@@ -80,7 +80,7 @@ public class TestCatalogoLibros {
         ClaseBase.esperarXSegundos(2000);
         ClaseBase.cerrarBrowser();
     }
-    //@Test
+    @Test
     public void CP003_SinCurso () throws InterruptedException {
         ClaseBase.esperarXSegundos(5000);
         homePage.irACambiaEstudiante();
@@ -96,7 +96,7 @@ public class TestCatalogoLibros {
         ClaseBase.esperarXSegundos(2000);
         ClaseBase.cerrarBrowser();
     }
-    //@Test
+    @Test
     public void CP004_SinFechaNac () throws InterruptedException {
         ClaseBase.esperarXSegundos(5000);
         homePage.irACambiaEstudiante();
@@ -113,7 +113,7 @@ public class TestCatalogoLibros {
     }
 
 
-    //@Test
+    @Test
     public void CP005_IngresoCorrecto() throws InterruptedException {
         ClaseBase.esperarXSegundos(5000);
         homePage.irACambiaEstudiante();
